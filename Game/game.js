@@ -1,36 +1,74 @@
+var counter = 0;
+var timeleft = 5;
+var tenSecondsLeft;
+var timesup;
+var randomWord;
+
+function preload() {
+    tenSecondsLeft = loadSound("countdownSound.mp3");
+    timesup = loadSound("timesup.mp3");
+
+}
 function setup() {
-    w = 1600;
-    h = 900;
+    print("TEST");
+    w = 1400;
+    h = 750;
     createCanvas(w, h);
-    size = 20;
-    makeGrid();
-    makePlayer()
+    strokeWeight(10);
+    rect(0, 0, w, h);
+    frameRate(60);
+    var words = ['cheese', 'bone', 'socks', 'leaf', 'whale', 'pie', 'shirt', 'orange', 'lollipop', 'bed', 'mouth', 'person', 'horse', 'snake', 'jar', 'spoon', 'lamp', 'kite', 'monkey', 'swing', 'cloud', 'snowman', 'baby', 'eyes', 'pen', 'giraffe', 'grapes', 'book', 'ocean', 'star', 'cupcake', 'cow', 'lips', 'worm', 'sun', 'basketball', 'hat', 'bus', 'chair', 'purse', 'head', 'spider','shoe', 'ghost', 'coat', 'chicken', 'heart', 'jellyfish', 'tree', 'seashell', 'duck', 'bracelet', 'grass', 'jacket', 'slide', 'doll', 'spider', 'clock', 'cup', 'bridge', 'apple', 'balloon', 'drum', 'ears', 'egg', 'bread', 'nose', 'house', 'beach', 'airplane', 'inchworm', 'hippo', 'light', 'turtle', 'ball', 'carrot', 'cherry', 'ice', 'pencil', 'circle', 'bed', 'ant', 'girl', 'glasses', 'flower', 'mouse', 'banana', 'alligator', 'bell', 'robot', 'smile', 'bike', 'rocket', 'dinosaur', 'dog', 'bunny', 'cookie', 'bowl', 'apple', 'door', 'horse', 'door', 'song', 'trip', 'backbone', 'bomb', 'round', 'treasure', 'garbage', 'park', 'whistle', 'palace', 'baseball', 'coal', 'queen', 'dominoes', 'photograph', 'computer', 'hockey', 'aircraft', 'pepper', 'key', 'ipad', 'whisk', 'cake', 'circus', 'battery', 'mailman', 'cowboy', 'password', 'bicycle', 'skate', 'electricity', 'lightsaber', 'nature', 'shallow', 'toast', 'outside', 'America', 'roller', 'blading', 'gingerbread', 'man', 'bowtie', 'light', 'bulb', 'platypus', 'music', 'sailboat', 'popsicle', 'knee', 'pineapple', 'tusk', 'sprinkler','money', 'spool', 'lighthouse', 'doormat', 'face', 'flute', 'owl', 'gate', 'suitcase', 'bathroom', 'scale', 'peach', 'newspaper', 'watering', 'can', 'hook', 'school', 'beaver', 'camera', 'hair', 'dryer', 'mushroom', 'quilt', 'chalk', 'dollar', 'soda', 'chin', 'swing', 'garden','ticket', 'boot', 'cello', 'rain', 'clam', 'pelican', 'stingray', 'nail', 'sheep', 'stoplight', 'coconut', 'crib', 'hippopotamus', 'ring', 'video', 'camera', 'snowflake'];
+    randomWord = words[getRandomInt(0, words.length-1)].toString();
+    var timer = select("#timer");
+    var word = select('#randomWord');
+    timer.html(convertSeconds(timeleft - counter));
+    word.html(randomWord);
+    var interval = setInterval(timeIt, 1000);
+    function timeIt() {
+        counter++;
+        timer.html(convertSeconds(timeleft - counter));
+        if(counter == timeleft) {
+            clearInterval(interval);
+            counter = 0;
+        }
+        if(counter >= timeleft-10 && counter < timeleft) {
+            tenSecondsLeft.play();
+            timer.style("color", "#FF0000");
+        }
+    }
 }
 
 function draw() {
-
-
-}
-
-function makeGrid() {
-    rect(0, 0, w-1, h-1);
-    var i = 0;
-    while(i <= w/size){
-        var x = i*size;
-        line(x, 0, x, h);
-        i += 1
-    }
-    var i = 0;
-    while(i <= h/size){
-        var y = i*size;
-        line(0, y, w, y);
-        i += 1
+    if (mouseIsPressed && counter !== 0) {
+        fill(0);
+        strokeWeight(5);
+        line(mouseX, mouseY, pmouseX, pmouseY);
     }
 }
 
-function makePlayer() {
-    fill(random(255), random(255), random(255));
-    randx = Math.floor(random(w/size)-1)*size;
-    randy = Math.floor(random(h/size)-1)*size;
-    rect(randx, randy, size, size)
+function convertSeconds(s) {
+    var minutes = floor(s / 60);
+    var seconds = s % 60;
+    return nf(minutes,2)+":"+nf(seconds,2)
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+function takeGuess(){
+    var guess = document.getElementById("guess").value;
+    var actual = randomWord;
+    print(guess);
+    print(actual);
+    if(guess == actual) {
+        document.getElementById("guess").style.backgroundColor = "#00FF00"
+    }
+    else {
+        document.getElementById("guess").style.backgroundColor = "#FF0000";
+        setTimeout(document.getElementById("guess").style.backgroundColor = "#FFFFFF", 3000);
+
+    }
 }

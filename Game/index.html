@@ -3,11 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>Color Splash Tag</title>
-    <script src="game.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script>
+    <script language="javascript" type="text/javascript" src="game.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Black Ops One' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Cute Font' rel='stylesheet'>
+    <style>
+        p {
+            font-family: 'Cute Font';
+            font-size: 75px;
+            margin: 0px;
+            height: 70px;
+        }
+        h1 {
+             font-family: 'Cute Font';
+             font-size: 75px;
+             margin: 0px;
+             height: 70px;
+             position: absolute;
+             top: 0;
+             left: 500px;
+         }
+        h2 {
+            color: crimson;
+            font-family: 'Cute Font';
+            font-size: 75px;
+            margin: 0px;
+            height: 70px;
+            position: absolute;
+            top: 0;
+            left: 800px;
+        }
+        #guess {
+            position: absolute;
+            bottom: 110px;
+            right: 195px;
+            width: 300px;
+            height: 60px;
 
+            font-size:24px;
+        }
+        #guessButton {
+            position: absolute;
+            bottom: 110px;
+            right: 90px;
+            width: 100px;
+            height: 65px;
+            font-size:24px;
+        }
+    </style>
 </head>
 <body>
-<script>update("TEST")</script>
+<p id="timer" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;"></p>
+<h1>Your word: </h1>
+<h2 id="randomWord"></h2>
+<input id="guess" type="text" >
+<button id="guessButton" onClick="takeGuess();">Make Guess!</button>
+
+<script>
+    var input = document.getElementById("guess");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("guessButton").click();
+        }
+    });
+</script>
 </body>
 </html>
