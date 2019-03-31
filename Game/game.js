@@ -39,12 +39,11 @@ function setup() {
             timer.style("color", "#FF0000");
         }
     }
+    strokeWeight(5);
 }
 
 function draw() {
     if (mouseIsPressed && counter !== 0) {
-        fill(0);
-        strokeWeight(5);
         line(mouseX, mouseY, pmouseX, pmouseY);
     }
 }
@@ -82,5 +81,12 @@ function clearBoard(){
     clear();
     strokeWeight(10);
     noFill();
+    stroke(0);
     rect(0, 0, w, h);
+
+}
+
+function changeColor(color) {
+    strokeWeight(5);
+    stroke(color)
 }

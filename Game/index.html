@@ -63,15 +63,112 @@
             font-size:30px;
             font-family: 'Baloo Chettan';
         }
+        #blackButton {
+            position: absolute;
+            top: 840px;
+            left: 8px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+        }
+        #redButton {
+            position: absolute;
+            top: 840px;
+            left: 98px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+            color: red;
+        }
+        #orangeButton {
+            position: absolute;
+            top: 840px;
+            left: 188px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+            color: orange;
+        }
+        #yellowButton {
+            position: absolute;
+            top: 840px;
+            left: 278px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+            color: yellow;
+        }
+        #greenButton {
+            position: absolute;
+            top: 840px;
+            left: 368px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+            color: green;
+        }
+        #blueButton {
+            position: absolute;
+            top: 840px;
+            left: 458px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+            color: blue;
+        }
+        #purpleButton {
+            position: absolute;
+            top: 840px;
+            left: 548px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+            color: purple;
+        }
+        #brownButton {
+            position: absolute;
+            top: 840px;
+            left: 638px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+            color: brown;
+        }
+        #eraseButton {
+            position: absolute;
+            top: 840px;
+            left: 1200px;
+            width: 80px;
+            height: 40px;
+            font-size:20px;
+            font-family: 'Baloo Chettan';
+        }
     </style>
 </head>
 <body>
 <p id="timer" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;"></p>
-<h1>Your word: </h1>
-<h2 id="randomWord"></h2>
+<h1 style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;">Your word: </h1>
+<h2 id="randomWord" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;"></h2>
 <input id="guess" type="text" >
-<button id="guessButton" onClick="takeGuess();">Make Guess!</button>
-<button id="clearButton" onClick="clearBoard();">Clear</button>
+<button id="guessButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="takeGuess();">Make Guess!</button>
+<button id="clearButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="clearBoard();strokeWeight(5)">Clear</button>
+<button id="blackButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('black');">Black</button>
+<button id="redButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('red');">Red</button>
+<button id="orangeButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('orange');">Orange</button>
+<button id="yellowButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('yellow');">Yellow</button>
+<button id="greenButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('green');">Green</button>
+<button id="blueButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('blue');">Blue</button>
+<button id="purpleButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('purple');">Purple</button>
+<button id="brownButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('brown');">Brown</button>
+<button id="eraseButton" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" unselectable="on" onselectstart="return false;" onmousedown="return false;" onClick="changeColor('white');strokeWeight(30)">Eraser</button>
 <script>
     var input = document.getElementById("guess");
     input.addEventListener("keyup", function(event) {
