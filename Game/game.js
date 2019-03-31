@@ -1,16 +1,15 @@
 var counter = 0;
-var timeleft = 5;
+var timeleft = 20;
 var tenSecondsLeft;
 var timesup;
 var randomWord;
 
 function preload() {
     tenSecondsLeft = loadSound("countdownSound.mp3");
-    timesup = loadSound("timesup.mp3");
+    timesup = loadSound("airhorn.mp3");
 
 }
 function setup() {
-    print("TEST");
     w = 1400;
     h = 750;
     createCanvas(w, h);
@@ -28,6 +27,7 @@ function setup() {
         counter++;
         timer.html(convertSeconds(timeleft - counter));
         if(counter == timeleft) {
+            timesup.play()
             clearInterval(interval);
             counter = 0;
         }
@@ -68,7 +68,7 @@ function takeGuess(){
     }
     else {
         document.getElementById("guess").style.backgroundColor = "#FF0000";
-        setTimeout(document.getElementById("guess").style.backgroundColor = "#FFFFFF", 3000);
+        setTimeout(function(){document.getElementById("guess").style.backgroundColor = "#FFFFFF"}, 1000);
 
     }
 }
