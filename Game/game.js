@@ -1,13 +1,15 @@
 var counter = 0;
-var timeleft = 20;
+var timeleft = 25;
 var tenSecondsLeft;
 var timesup;
 var randomWord;
-
+var ding;
+var buzz;
 function preload() {
     tenSecondsLeft = loadSound("countdownSound.mp3");
     timesup = loadSound("airhorn.mp3");
-
+    ding = loadSound("ding.mp3");
+    buzz = loadSound("buzz.mp3");
 }
 function setup() {
     w = 1400;
@@ -27,9 +29,10 @@ function setup() {
         counter++;
         timer.html(convertSeconds(timeleft - counter));
         if(counter == timeleft) {
-            timesup.play()
+            timesup.play();
             clearInterval(interval);
             counter = 0;
+
         }
         if(counter >= timeleft-10 && counter < timeleft) {
             tenSecondsLeft.play();
@@ -49,7 +52,7 @@ function draw() {
 function convertSeconds(s) {
     var minutes = floor(s / 60);
     var seconds = s % 60;
-    return nf(minutes,2)+":"+nf(seconds,2)
+    return nf(minutes,2)+":"+nf(seconds,2);
 }
 
 function getRandomInt(min, max) {
@@ -64,11 +67,20 @@ function takeGuess(){
     print(guess);
     print(actual);
     if(guess == actual) {
-        document.getElementById("guess").style.backgroundColor = "#00FF00"
+        document.getElementById("guess").style.backgroundColor = "#00FF00";
+        ding.play()
     }
     else {
         document.getElementById("guess").style.backgroundColor = "#FF0000";
+        buzz.play();
         setTimeout(function(){document.getElementById("guess").style.backgroundColor = "#FFFFFF"}, 1000);
 
     }
+}
+
+function clearBoard(){
+    clear();
+    strokeWeight(10);
+    noFill();
+    rect(0, 0, w, h);
 }
